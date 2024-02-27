@@ -3,7 +3,7 @@ import axios from "axios";
 import RecipeCard from "../components/RecipeCard";
 import { Box, Typography, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
-function MainFeedPage() {
+function RecipeInspirationPage() {
   const [meals, setMeals] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -96,4 +96,4 @@ function MainFeedPage() {
   );
 }
 
-export default MainFeedPage;
+export default RecipeInspirationPage;

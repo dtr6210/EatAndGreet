@@ -15,7 +15,7 @@ import LunchDiningIcon from "@mui/icons-material/LunchDining";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 
-const pages = ["Main", "About", "Create Post"];
+const pages = ["Main", "Create Post", "About", "Recipe Inspiration"];
 const settings = [
   { name: "Profile", path: "/profile" },
   { name: "Account", path: "/account" },
@@ -48,9 +48,9 @@ function NavBar() {
   // function to handle logout
 
   const logout = () => {
-    handleLogout(); // clear user 
+    handleLogout(); // clear user
     navigate("/"); // after logout go to homepage
-  }
+  };
 
   return (
     <AppBar position="fixed" sx={{ bgcolor: "#B5B541" }}>
@@ -142,7 +142,7 @@ function NavBar() {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 <Link
-                  to={`/${page.toLowerCase().replace(/\s+/g, "")}`} // Convert page names to URL paths
+                  to={`/${page.toLowerCase().replace(/\s+/g, "-")}`}
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   {page}
@@ -177,22 +177,26 @@ function NavBar() {
                 setting.name === "Logout" ? (
                   // Logout item
                   <MenuItem key={setting.name} onClick={logout}>
-                    <Typography textAlign="center" style={{ textDecoration: "none", color: "inherit" }}>
+                    <Typography
+                      textAlign="center"
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
                       {setting.name}
                     </Typography>
                   </MenuItem>
                 ) : (
-                <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                  <Typography
-                    textAlign="center"
-                    component={Link}
-                    to={setting.path}
-                    style={{ textDecoration: "none", color: "inherit" }}
-                  >
-                    {setting.name}
-                  </Typography>
-                </MenuItem>
-              ))}
+                  <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                    <Typography
+                      textAlign="center"
+                      component={Link}
+                      to={setting.path}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      {setting.name}
+                    </Typography>
+                  </MenuItem>
+                )
+              )}
             </Menu>
           </Box>
         </Toolbar>
