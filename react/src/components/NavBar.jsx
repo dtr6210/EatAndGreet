@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import LunchDiningIcon from "@mui/icons-material/LunchDining";
+import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 
@@ -56,7 +56,7 @@ function NavBar() {
     <AppBar position="fixed" sx={{ bgcolor: "#B5B541" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <LunchDiningIcon
+          <LocalDiningIcon
             sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
           />
           <Typography
@@ -113,7 +113,7 @@ function NavBar() {
               ))}
             </Menu>
           </Box>
-          <LunchDiningIcon
+          <LocalDiningIcon
             sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
           />
           <Typography
