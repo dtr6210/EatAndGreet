@@ -24,6 +24,24 @@ const getPosts = (res) => {
     });
 };
 
+// to get post by id
+const getPostById = (req, res) => {
+  const postId = req.params.id;
+
+  Models.Post.findById(postId)
+    .then(data => {
+      if (!data) {
+        return res.status(404).send({ result: 404, message: "Post not found" });
+      }
+      res.send({ result: 200, data: data });
+    })
+    .catch(err => {
+      console.log(err);
+      res.send({ result: 500, error: err.message });
+    });
+};
+
+
 const updatePost = (req, res) => {
   // updates the post matching the ID from the param using JSON data POSTed in request body
   console.log(req.body);
@@ -63,4 +81,5 @@ module.exports = {
   updatePost,
   deletePost,
   getPostsByUser,
+  getPostById
 };

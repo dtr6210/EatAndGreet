@@ -38,6 +38,12 @@ router.get("/byUser/:id", (req, res) => {
     Controllers.postController.getPostsByUser(req, res);
   });
 
+  // http://localhost:8080/api/posts/:id  Adds a GET route to return a single post by ID
+router.get("/:id", (req, res) => {
+  console.log(`GET /api/posts/${req.params.id} - Fetching post by ID`);
+  Controllers.postController.getPostById(req, res);
+});
+
 
 
   module.exports = router;
