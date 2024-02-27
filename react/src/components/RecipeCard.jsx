@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+//this card is for the inspirational recipes
+
 export default function RecipeCard({
   id,
   title,

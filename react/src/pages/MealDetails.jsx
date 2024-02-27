@@ -9,7 +9,8 @@ import {
   ListItem,
 } from "@mui/material";
 
-//component for displaying meal details
+//component for displaying meal details for the inspirational recipes
+
 export default function MealDetailPage() {
   const { mealId } = useParams();
   const [mealDetails, setMealDetails] = useState(null);
