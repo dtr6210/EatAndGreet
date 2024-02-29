@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import RecipeCard from "../components/RecipeCard";
-import { Box, Typography, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import {
+  Box,
+  Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 
 function RecipeInspirationPage() {
   const [meals, setMeals] = useState([]);
@@ -51,46 +58,53 @@ function RecipeInspirationPage() {
   };
 
   return (
-    <Box sx={{ display: "flex", p: 2, mt: 8 }}>
-      {" "}
-      <Box sx={{ flex: 1, p: 2 }}>
-        <Typography variant="h6" gutterBottom>
-          Choose a food category
-        </Typography>
-        <FormControl fullWidth>
-          <InputLabel id="category-select-label">Category</InputLabel>
-          <Select
-            labelId="category-select-label"
-            value={selectedCategory}
-            label="Category"
-            onChange={handleCategoryChange}
-          >
-            {categories.map((category) => (
-              <MenuItem key={category.idCategory} value={category.strCategory}>
-                {category.strCategory}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
-      <Box
-        sx={{
-          flex: 3,
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          p: 2,
-          gap: 2,
-        }}
-      >
-        {meals.map((meal) => (
-          <RecipeCard
-            key={meal.idMeal}
-            id={meal.idMeal}
-            title={meal.strMeal}
-            imageURL={meal.strMealThumb}
-          />
-        ))}
+    <Box sx={{ p: 2, mt: 4 }}>
+      <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
+        View other recipes from the internet for inspiration
+      </Typography>
+      <Box sx={{ display: "flex", mt: 4 }}>
+        <Box sx={{ flex: 1, p: 2 }}>
+          <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
+            Choose a food category
+          </Typography>
+          <FormControl fullWidth>
+            <InputLabel id="category-select-label">Category</InputLabel>
+            <Select
+              labelId="category-select-label"
+              value={selectedCategory}
+              label="Category"
+              onChange={handleCategoryChange}
+            >
+              {categories.map((category) => (
+                <MenuItem
+                  key={category.idCategory}
+                  value={category.strCategory}
+                >
+                  {category.strCategory}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Box>
+        <Box
+          sx={{
+            flex: 3,
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            p: 2,
+            gap: 2,
+          }}
+        >
+          {meals.map((meal) => (
+            <RecipeCard
+              key={meal.idMeal}
+              id={meal.idMeal}
+              title={meal.strMeal}
+              imageURL={meal.strMealThumb}
+            />
+          ))}
+        </Box>
       </Box>
     </Box>
   );
