@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -15,6 +17,10 @@ import Footer from "../components/Footer";
 import Logo2 from "/Logo2.png";
 
 export default function SignupPage() {
+  const navigate = useNavigate();
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -28,14 +34,30 @@ export default function SignupPage() {
       email: formData.get("email"),
       password: formData.get("password"),
     };
-    let result = await fetch(`http://localhost:8080/api/users/create`, {
-      method: "POST", //specify the http method
-      body: JSON.stringify(data), //the body is where the data is.  and stringify changes language to JSON
-      headers: { "Content-Type": "application/json" }, //need to tell server what language we are speakiing.
+
+    fetch(`http://localhost:8080/api/users/create`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to create account");
+        }
+        return response.json();
+      })
       .then((data) => {
-        console.log(data);
+        console.log("Account created:", data);
+        setSuccessMessage(
+          "Account created successfully! Redirecting to login..." // set success message on successful account creation
+        );
+        setTimeout(() => {
+          navigate("/"); // Redirect to login page after 3 seconds
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setErrorMessage("Failed to create account. Please try again."); // set error message on failure
       });
   };
 
@@ -112,6 +134,16 @@ export default function SignupPage() {
               >
                 Sign Up
               </Button>
+              {successMessage && (
+                <div style={{ color: "green", marginTop: "10px" }}>
+                  {successMessage}
+                </div>
+              )}
+              {errorMessage && (
+                <div style={{ color: "red", marginTop: "10px" }}>
+                  {errorMessage}
+                </div>
+              )}
               <Grid container justifyContent="flex-end" sx={{ mb: 5 }}>
                 <Grid item>
                   <Link href="/" variant="body2">

@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 const pages = ["Main", "Create Post", "About", "Recipe Inspiration"];
 const settings = [
@@ -154,7 +155,7 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <AccountCircleOutlinedIcon sx={{ color: "whitesmoke" }}/>
               </IconButton>
             </Tooltip>
             <Menu
