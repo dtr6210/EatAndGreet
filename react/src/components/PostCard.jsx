@@ -14,6 +14,8 @@ import {
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
+// The PostCard is used to display recipes on the main feed page
+
 function PostCard({ id, title, imageUrl, onLike }) {
   console.log("Rendering PostCard with id:", id); // checking id
   const navigate = useNavigate();
@@ -43,7 +45,7 @@ function PostCard({ id, title, imageUrl, onLike }) {
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="view post" onClick={handleViewPost}>
-          View
+          View the full recipe
         </IconButton>
       </CardActions>
     </Card>

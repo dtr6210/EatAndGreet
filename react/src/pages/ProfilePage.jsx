@@ -6,6 +6,7 @@ import {
   Container,
   Avatar,
   Link,
+  Box,
 } from "@mui/material";
 import defaultprofile from "/defaultprofile.png";
 import AdvertisingCard from "../components/AdvertisingCard";
@@ -14,16 +15,15 @@ import { useUserContext } from "../context/UserContext";
 
 const ProfilePage = () => {
   const [posts, setPosts] = useState([]);
-  const { currentUser } = useUserContext(); // to accesss current user data
+  const { currentUser } = useUserContext();
 
   useEffect(() => {
     const fetchPosts = async () => {
       if (currentUser?._id) {
-        // Check for current user id
         try {
           const response = await fetch(
             `http://localhost:8080/api/posts/byUser/${currentUser._id}`
-          ); //look for current user by id
+          );
           const data = await response.json();
           if (response.ok) {
             setPosts(data.data);
@@ -37,7 +37,7 @@ const ProfilePage = () => {
     };
 
     fetchPosts();
-  }, [currentUser?._id]); // Rerun when currentUser changes
+  }, [currentUser?._id]);
 
   const handleDeletePost = async (postId) => {
     const response = await fetch(`http://localhost:8080/api/posts/${postId}`, {
@@ -68,11 +68,13 @@ const ProfilePage = () => {
     }
   };
 
+  console.log(posts); // log the posts array to check for _id values
+
   return (
-    <Container maxWidth="xl" sx={{ mt: 5, padding: 2 }}>
-<Grid container spacing={2} sx={{ height: 'calc(100vh - 40px)' }}>
+    <Container maxWidth="xl" sx={{ mt: 5 }}>
+      <Grid container spacing={2}>
         {/* Left side - Profile */}
-        <Grid item xs={12} sm={2} md={3}>
+        <Grid item xs={12} sm={3} lg={3}>
           <Paper
             elevation={3}
             sx={{
@@ -89,17 +91,16 @@ const ProfilePage = () => {
               Profile
             </Typography>
             <Typography
-              variant="subtitle"
+              variant="subtitle1"
               sx={{ fontWeight: "bold", marginBottom: 1 }}
             >
               Username: {currentUser.username}
             </Typography>
             <Avatar
-              sx={{ width: 80, height: 90, marginBottom: 2 }}
-              src={currentUser.profilePicture || defaultprofile} // Use actual profile picture if available, else  use default profile picture
+              sx={{ width: 80, height: 80, marginBottom: 2 }}
+              src={currentUser.profilePicture || defaultprofile}
               alt="Profile Pic"
             />
-            {/* About Me Section */}
             <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
               About Me
             </Typography>
@@ -111,7 +112,6 @@ const ProfilePage = () => {
                 alignSelf: "flex-start",
               }}
             >
-              {/* use current about me info , else "no about me info available" */}
               {currentUser.aboutMe || "No About Me info available."}
             </Typography>
             <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
@@ -146,17 +146,16 @@ const ProfilePage = () => {
         </Grid>
 
         {/* Middle - for user posts */}
-        <Grid item xs={12} sm={8} md={6}>
-          <Paper elevation={3} sx={{ padding: 2, minHeight: "80vh" }}>
-            <Typography variant="h6">My Posts</Typography>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              {posts.map((post) => (
+        <Grid item xs={12} sm={6} lg={6}>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+              gap: 2,
+            }}
+          >
+            {posts.length > 0 &&
+              posts.map((post) => (
                 <ProfileRecipeCard
                   key={post._id}
                   id={post._id}
@@ -168,12 +167,11 @@ const ProfilePage = () => {
                   onUpdate={handleUpdatePost}
                 />
               ))}
-            </div>
-          </Paper>
+          </Box>
         </Grid>
 
         {/* Right side - Advertising */}
-        <Grid item xs={12} sm={2} md={3}>
+        <Grid item xs={12} sm={3} lg={3}>
           <Paper
             elevation={3}
             sx={{
@@ -184,8 +182,12 @@ const ProfilePage = () => {
               gap: 2,
             }}
           >
-            <Typography variant="h6">Your Ads Here:</Typography>
-            {/* Advertising cards */}
+            <Typography
+              variant="h6"
+              sx={{ fontWeight: "bold", marginBottom: 2 }}
+            >
+              Your Ads Here:
+            </Typography>
             <AdvertisingCard />
             <AdvertisingCard />
             <AdvertisingCard />
