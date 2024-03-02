@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Paper, Typography, Container, Avatar } from "@mui/material";
+import {
+  Grid,
+  Paper,
+  Typography,
+  Container,
+  Avatar,
+  Link,
+} from "@mui/material";
 import defaultprofile from "/defaultprofile.png";
 import AdvertisingCard from "../components/AdvertisingCard";
 import ProfileRecipeCard from "../components/ProfileRecipeCard";
@@ -41,25 +48,29 @@ const ProfilePage = () => {
     }
   };
 
-  const handleUpdatePost = async (postId, { editedTitle, editedDirections }) => {
+  const handleUpdatePost = async (
+    postId,
+    { editedTitle, editedDirections }
+  ) => {
     const response = await fetch(`http://localhost:8080/api/posts/${postId}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            recipe: editedTitle, 
-            directions: editedDirections,
-        }),
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        recipe: editedTitle,
+        directions: editedDirections,
+      }),
     });
     if (response.ok) {
       const updatedPost = await response.json();
       setPosts(posts.map((post) => (post._id === postId ? updatedPost : post)));
     }
   };
+
   return (
     <Container maxWidth="xl" sx={{ mt: 5, padding: 2 }}>
-      <Grid container spacing={2}>
+<Grid container spacing={2} sx={{ height: 'calc(100vh - 40px)' }}>
         {/* Left side - Profile */}
         <Grid item xs={12} sm={2} md={3}>
           <Paper
@@ -75,11 +86,17 @@ const ProfilePage = () => {
               variant="h6"
               sx={{ fontWeight: "bold", marginBottom: 1 }}
             >
-              Profile:
+              Profile
+            </Typography>
+            <Typography
+              variant="subtitle"
+              sx={{ fontWeight: "bold", marginBottom: 1 }}
+            >
+              Username: {currentUser.username}
             </Typography>
             <Avatar
               sx={{ width: 80, height: 90, marginBottom: 2 }}
-              src={defaultprofile}
+              src={currentUser.profilePicture || defaultprofile} // Use actual profile picture if available, else  use default profile picture
               alt="Profile Pic"
             />
             {/* About Me Section */}
@@ -88,31 +105,43 @@ const ProfilePage = () => {
             </Typography>
             <Typography
               variant="body2"
-              sx={{ textAlign: "center", marginBottom: 2 }}
+              sx={{
+                textAlign: "left",
+                marginBottom: 2,
+                alignSelf: "flex-start",
+              }}
             >
-              {/* Placeholder text */}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla
-              facilisi etiam dignissim diam quis enim. Ut consequat semper
-              viverra nam libero justo laoreet. Euismod elementum nisi quis
-              eleifend quam adipiscing vitae proin. Sed elementum tempus egestas
-              sed sed risus pretium quam vulputate. Scelerisque viverra mauris
-              in aliquam sem fringilla ut morbi. A diam maecenas sed enim ut sem
-              viverra aliquet eget. Vestibulum morbi blandit cursus risus at
-              ultrices mi. Malesuada fames ac turpis egestas. Purus sit amet
-              luctus venenatis.
+              {/* use current about me info , else "no about me info available" */}
+              {currentUser.aboutMe || "No About Me info available."}
             </Typography>
-            {/* Social Media section: add links to fb, insta, personal websites, etc */}
-            <Typography
-              variant="subtitle1"
-              sx={{ fontWeight: "bold", marginBottom: 2 }}
-            >
-              Social Media
+            <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+              Personal Website
             </Typography>
-            <Typography variant="body2" sx={{ textAlign: "center" }}>
-              Other Social Links go here! Add your FB, Inst, or personal
-              webpages for your products!{" "}
-            </Typography>
+            {currentUser.personalWebsite ? (
+              <Link
+                href={currentUser.personalWebsite}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  alignSelf: "flex-start",
+                  marginBottom: 2,
+                  wordBreak: "break-all",
+                }}
+              >
+                {currentUser.personalWebsite}
+              </Link>
+            ) : (
+              <Typography
+                variant="body2"
+                sx={{
+                  textAlign: "left",
+                  marginBottom: 2,
+                  alignSelf: "flex-start",
+                }}
+              >
+                Add your personal websites here.
+              </Typography>
+            )}
           </Paper>
         </Grid>
 

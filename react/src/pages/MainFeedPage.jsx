@@ -3,7 +3,6 @@ import axios from "axios";
 import PostCard from "../components/PostCard";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
 import AdvertisingCard from "../components/AdvertisingCard";
 
 export default function MainFeedPage() {
@@ -19,25 +18,13 @@ export default function MainFeedPage() {
       .catch((error) => console.error("Error fetching posts:", error));
   }, []);
 
-  const AdvertisementSpace = styled("div")(({ theme }) => ({
-    backgroundColor: theme.palette.background.paper,
-    height: "100vh", 
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: theme.spacing(2),
-    
-  }));
-
   return (
     <Grid container spacing={2} mt={5}>
       <Grid item xs={12} lg={9}>
-        {" "}
-        
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)", 
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: 2,
           }}
         >
@@ -53,11 +40,19 @@ export default function MainFeedPage() {
         </Box>
       </Grid>
       <Grid item xs={12} lg={3}>
-        {" "}
         {/* Advertisement section */}
-        <AdvertisementSpace>
+        <Box
+          sx={{
+            backgroundColor: "background.paper",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 2,
+          }}
+        >
           <AdvertisingCard />
-        </AdvertisementSpace>
+        </Box>
       </Grid>
     </Grid>
   );
