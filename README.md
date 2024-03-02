@@ -1,4 +1,4 @@
-# MiniProject3 - EatAndGreet
+# Capstone Project - EatAndGreet
 
 EatAndGreet is a social media application designed to connect users through their love of food.
 
