@@ -13,6 +13,8 @@ const userSchema = new Schema(
     },
     password: { type: String, required: true },
     profilePicture: { type: String },
+    aboutMe: { type: String },
+    personalWebsite: { type: String },
   },
   { timestamps: true }
 );
