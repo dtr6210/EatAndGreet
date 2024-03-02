@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Typography, Box } from "@mui/material";
+import { borders } from "@mui/system";
 
 function DetailedPostPage() {
   const { postId } = useParams();
@@ -23,17 +24,48 @@ function DetailedPostPage() {
   if (!post) return <Box>Loading...</Box>;
 
   return (
-    <Box sx={{ p: 2, mt: 8 }}>
-      <Typography variant="h4">{post.recipe}</Typography>
+    <Box
+      sx={{
+        p: 2,
+        mt: 8,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Typography variant="h4" sx={{ fontWeight: "bold", mt: 1, mb: 1 }}>
+        {post.recipe}
+      </Typography>
       <img src={post.picture} alt={post.recipe} style={{ maxWidth: "100%" }} />
-      <Typography variant="h6">Ingredients:</Typography>
-      <Box>
+      <Typography variant="h6" sx={{ fontWeight: "bold", mt: 1, mb: 1 }}>
+        Ingredients:
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          width: "fit-content",
+        }}
+      >
         {post.ingredients.map((ingredient, index) => (
-          <Typography key={index}>{ingredient}</Typography> 
+          <Typography key={index}>{ingredient}</Typography>
         ))}
       </Box>
-      <Typography variant="h6">Instructions:</Typography>
-      <Typography paragraph>{post.directions}</Typography>
+      <Typography variant="h6" sx={{ fontWeight: "bold", mt: 1, mb: 1 }}>
+        Instructions:
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          width: "fit-content",
+          textAlign: "left",
+        }}
+      >
+        <Typography paragraph>{post.directions}</Typography>
+      </Box>
     </Box>
   );
 }

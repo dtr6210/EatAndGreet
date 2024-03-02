@@ -18,6 +18,8 @@ export default function MainFeedPage() {
       .catch((error) => console.error("Error fetching posts:", error));
   }, []);
 
+  console.log(posts) //log the posts array to check for _id values
+
   return (
     <Grid container spacing={2} mt={5}>
       <Grid item xs={12} lg={9}>

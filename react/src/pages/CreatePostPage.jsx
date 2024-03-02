@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TextField, Button, Box, Typography, Container } from "@mui/material";
+import { TextField, Button, Box, Typography, Container, Paper } from "@mui/material";
 import { useUserContext } from "../context/UserContext";
 
 export default function CreatePostPage() {
@@ -48,6 +48,7 @@ export default function CreatePostPage() {
 
   return (
     <Container component="main" maxWidth="md">
+       <Paper elevation={3} sx={{ p: 3, mt: 8, mb: 5 }}> 
       <Typography component="h1" variant="h5" sx={{ mt: 5 }}>
         Share Your Recipe
       </Typography>
@@ -113,6 +114,7 @@ export default function CreatePostPage() {
           Share Recipe
         </Button>
       </Box>
+      </Paper>
     </Container>
   );
 }
