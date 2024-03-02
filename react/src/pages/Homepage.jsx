@@ -26,9 +26,9 @@ export default function SignInSide() {
   const navigate = useNavigate();
 
   // take to main feed if already signed in
-  useEffect(() =>{
-    if(currentUser.email) {
-      navigate('/main');
+  useEffect(() => {
+    if (currentUser.email) {
+      navigate("/main");
     }
   }, [currentUser, navigate]);
 
