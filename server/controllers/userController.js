@@ -69,10 +69,24 @@ const loginUser = (req, res) => {
     });
 };
 
+//get all posts liked by user
+const getLikedPostsByUser = (req, res) => {
+  const userId = req.params.id;
+  Models.Post.find({ likes: userId })
+    .then((data) => {
+      res.send({ result: 200, data: data });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send({ result: 500, error: err.message });
+    });
+};
+
 module.exports = {
   getUsers,
   createUser,
   updateUser,
   deleteUser,
   loginUser,
+  getLikedPostsByUser
 };
