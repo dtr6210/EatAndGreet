@@ -14,13 +14,19 @@ import MenuItem from "@mui/material/MenuItem";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 
-const pages = ["Main", "Create Post", "About", "Recipe Inspiration"];
+const pages = [
+  "Main",
+  "Create Post",
+  "Favorite Recipes",
+  "About",
+  "Recipe Inspiration",
+];
 const settings = [
   { name: "Profile", path: "/profile" },
-  { name: "Account", path: "/account" },
-  { name: "Dashboard", path: "/dashboard" },
+  // { name: "Account", path: "/account" },
+  // { name: "Dashboard", path: "/dashboard" },
   { name: "Logout" },
 ];
 
@@ -109,7 +115,14 @@ function NavBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">
+                    <Link
+                      to={`/${page.toLowerCase().replace(/\s+/g, "-")}`}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      {page}
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -155,7 +168,7 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <AccountCircleOutlinedIcon sx={{ color: "whitesmoke" }}/>
+                <AccountCircleOutlinedIcon sx={{ color: "whitesmoke" }} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -176,7 +189,6 @@ function NavBar() {
             >
               {settings.map((setting) =>
                 setting.name === "Logout" ? (
-                  // Logout item
                   <MenuItem key={setting.name} onClick={logout}>
                     <Typography
                       textAlign="center"
