@@ -8,6 +8,12 @@ router.get("/", (req, res) => {
   Controllers.userController.getUsers(res);
 });
 
+// http://localhost:8080/api/users/<id>/likedPosts   Adds a GET route to return liked posts
+router.get("/:id/likedPosts", (req, res) => {
+  console.log(`GET /api/users/${req.params.id}/likedPosts - Fetching liked posts by user`);
+  Controllers.userController.getLikedPostsByUser(req, res);
+});
+
 // http://localhost:8080/api/users/create   Adds a POST route to create a new user
 router.post("/create", (req, res) => {
   console.log(

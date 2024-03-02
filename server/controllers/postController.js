@@ -29,18 +29,17 @@ const getPostById = (req, res) => {
   const postId = req.params.id;
 
   Models.Post.findById(postId)
-    .then(data => {
+    .then((data) => {
       if (!data) {
         return res.status(404).send({ result: 404, message: "Post not found" });
       }
       res.send({ result: 200, data: data });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.send({ result: 500, error: err.message });
     });
 };
-
 
 const updatePost = (req, res) => {
   // updates the post matching the ID from the param using JSON data POSTed in request body
@@ -51,6 +50,33 @@ const updatePost = (req, res) => {
       console.log(err);
       res.status(500).send({ result: 500, error: err.message });
     });
+};
+
+// to like a post
+const likePost = (req, res) => {
+  const postId = req.params.id;
+  const userId = req.body.userId; 
+
+  Models.Post.findById(postId)
+    .then((post) => {
+      if (!post.likes.includes(userId)) {
+        return Models.Post.findByIdAndUpdate(
+          postId,
+          { $push: { likes: userId } },
+          { new: true }
+        );
+      } else {
+        return Models.Post.findByIdAndUpdate(
+          postId,
+          { $pull: { likes: userId } },
+          { new: true }
+        );
+      }
+    })
+    .then((updatedPost) =>
+      res.status(200).send({ result: 200, data: updatedPost })
+    )
+    .catch((err) => res.status(500).send({ result: 500, error: err.message }));
 };
 
 const deletePost = (req, res) => {
@@ -81,5 +107,6 @@ module.exports = {
   updatePost,
   deletePost,
   getPostsByUser,
-  getPostById
+  getPostById,
+  likePost
 };
