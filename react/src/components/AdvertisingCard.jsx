@@ -13,13 +13,29 @@ import advert5 from "/advert5.jpg";
 import advert6 from "/advert6.jpg";
 import advert7 from "/advert7.png";
 import advert8 from "/advert8.jpg";
+import advert9 from "/advert9.jpeg";
+import advert10 from "/advert10.jpg";
+import advert11 from "/advert11.jpg";
+import advert12 from "/advert12.jpeg";
 
-const adverts = [advert1, advert2, advert3, advert4, advert5, advert6, advert7, advert8]; //array of advertising images for random display
+const adverts = [
+  advert1,
+  advert2,
+  advert3,
+  advert4,
+  advert5,
+  advert6,
+  advert7,
+  advert8,
+  advert9,
+  advert10,
+  advert11,
+  advert12,
+]; //array of advertising images for random display
 
 export default function AdvertisingCard() {
-
   // select random advertisement each time component is rendered
-  const randomAdvert = adverts[Math.floor(Math.random() *adverts.length)];
+  const randomAdvert = adverts[Math.floor(Math.random() * adverts.length)];
 
   return (
     <Card sx={{ maxWidth: 345 }}>

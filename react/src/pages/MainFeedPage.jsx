@@ -66,6 +66,11 @@ export default function MainFeedPage() {
           <AdvertisingCard />
           <AdvertisingCard />
           <AdvertisingCard />
+          <AdvertisingCard />
+          <AdvertisingCard />
+          <AdvertisingCard />
+          <AdvertisingCard />
+          <AdvertisingCard />
         </Box>
       </Grid>
     </Grid>
