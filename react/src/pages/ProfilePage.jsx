@@ -172,26 +172,27 @@ const ProfilePage = () => {
 
         {/* Right side - Advertising */}
         <Grid item xs={12} sm={3} lg={3}>
-          <Paper
+          <Box
             elevation={3}
             sx={{
               padding: 2,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: 2,
+              gap: 10,
             }}
           >
             <Typography
               variant="h6"
               sx={{ fontWeight: "bold", marginBottom: 2 }}
             >
-              Your Ads Here:
+              Advertisements:
             </Typography>
             <AdvertisingCard />
             <AdvertisingCard />
             <AdvertisingCard />
-          </Paper>
+            <AdvertisingCard />
+          </Box>
         </Grid>
       </Grid>
     </Container>
