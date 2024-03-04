@@ -17,6 +17,11 @@ router.post("/create", (req, res) => {
   Controllers.postController.createPost(req.body, res);
 });
 
+// http://localhost:8080/api/posts/<id>/comments   Adds a POST route to comment on a post
+router.post("/:id/comments", (req, res) => {
+  Controllers.postController.addComment(req, res);
+});
+
 // http://localhost:8080/api/posts/<id>   Adds a PUT route to update a post
 router.put("/:id", (req, res) => {
   console.log(
@@ -30,6 +35,7 @@ router.put("/:id", (req, res) => {
 router.put("/:id/like", (req, res) => {
   Controllers.postController.likePost(req, res);
 });
+
 
 // http://localhost:8080/api/posts/<id>   Adds a DELETE route to delete a post
 router.delete("/:id", (req, res) => {

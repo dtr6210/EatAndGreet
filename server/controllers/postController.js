@@ -55,7 +55,7 @@ const updatePost = (req, res) => {
 // to like a post
 const likePost = (req, res) => {
   const postId = req.params.id;
-  const userId = req.body.userId; 
+  const userId = req.body.userId;
 
   Models.Post.findById(postId)
     .then((post) => {
@@ -101,6 +101,23 @@ const getPostsByUser = (req, res) => {
     });
 };
 
+// to add a comment to a post
+const addComment = (req, res) => {
+  const postId = req.params.id;
+  const commentData = {
+    text: req.body.text,
+    postBy: req.body.userId,
+    createdAt: new Date(),
+  };
+  Models.Post.findByIdAndUpdate(
+    postId,
+    { $push: { comments: commentData } },
+    { new: true }
+  )
+    .then((updatedPost) => res.status(200).json(updatedPost))
+    .catch((err) => res.status(500).json({ error: err.message }));
+};
+
 module.exports = {
   createPost,
   getPosts,
@@ -108,5 +125,6 @@ module.exports = {
   deletePost,
   getPostsByUser,
   getPostById,
-  likePost
+  likePost,
+  addComment,
 };
