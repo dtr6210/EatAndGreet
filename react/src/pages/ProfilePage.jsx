@@ -50,7 +50,7 @@ const ProfilePage = () => {
 
   const handleUpdatePost = async (
     postId,
-    { editedTitle, editedDirections }
+    { editedTitle, editedDirections, editedIngredients }
   ) => {
     const response = await fetch(`http://localhost:8080/api/posts/${postId}`, {
       method: "PUT",
@@ -59,12 +59,17 @@ const ProfilePage = () => {
       },
       body: JSON.stringify({
         recipe: editedTitle,
+        ingredients: editedIngredients,
         directions: editedDirections,
       }),
     });
     if (response.ok) {
       const updatedPost = await response.json();
-      setPosts(posts.map((post) => (post._id === postId ? updatedPost : post)));
+      setPosts(
+        posts.map((post) =>
+          post._id === postId ? { ...post, ...updatedPost.data } : post
+        )
+      );
     }
   };
 
