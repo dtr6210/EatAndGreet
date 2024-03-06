@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper"; 
 import Typography from "@mui/material/Typography"; 
 import AdvertisingCard from "../components/AdvertisingCard";
+import Footer from "../components/Footer";
 
 
 export default function MainFeedPage() {
@@ -24,6 +25,7 @@ export default function MainFeedPage() {
   console.log(posts); // Log the posts array to check for _id values
 
   return (
+    <Box>
     <Grid container spacing={2} mt={5}>
       <Grid item xs={12} lg={9}>
         <Box
@@ -74,5 +76,7 @@ export default function MainFeedPage() {
         </Box>
       </Grid>
     </Grid>
+    <Footer />
+    </Box>
   );
 }

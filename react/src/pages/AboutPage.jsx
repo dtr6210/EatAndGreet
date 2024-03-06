@@ -1,11 +1,26 @@
 import React from "react";
 import { Container, Paper, Typography, Box } from "@mui/material";
 import Footer from "../components/Footer";
+import Logo2 from "/Logo2.png";
 
 export default function AboutPage() {
   return (
+  <Box>
     <Container maxWidth="md" sx={{ mt: 4 }}>
       <Paper elevation={3} sx={{ p: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            my: 1,
+          }}
+        >
+          <img
+            src={Logo2}
+            alt="Logo 2 Image"
+            style={{ maxWidth: "35%", height: "auto" }}
+          />
+        </Box>
         <Typography variant="h4" gutterBottom>
           About Us
         </Typography>
@@ -45,5 +60,7 @@ export default function AboutPage() {
         </Typography>
       </Paper>
     </Container>
+    <Footer />
+    </Box>
   );
 }

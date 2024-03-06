@@ -9,6 +9,7 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+import Footer from "../components/Footer";
 
 function RecipeInspirationPage() {
   const [meals, setMeals] = useState([]);
@@ -58,6 +59,7 @@ function RecipeInspirationPage() {
   };
 
   return (
+    <Box>
     <Box sx={{ p: 2, mt: 4 }}>
       <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
         View other recipes from the internet for inspiration
@@ -106,6 +108,8 @@ function RecipeInspirationPage() {
           ))}
         </Box>
       </Box>
+    </Box>
+    <Footer />
     </Box>
   );
 }

@@ -12,6 +12,7 @@ import defaultprofile from "/defaultprofile.png";
 import AdvertisingCard from "../components/AdvertisingCard";
 import ProfileRecipeCard from "../components/ProfileRecipeCard";
 import { useUserContext } from "../context/UserContext";
+import Footer from "../components/Footer";
 
 const ProfilePage = () => {
   const [posts, setPosts] = useState([]);
@@ -76,6 +77,7 @@ const ProfilePage = () => {
   console.log(posts); // log the posts array to check for _id values
 
   return (
+    <Box>
     <Container maxWidth="xl" sx={{ mt: 5 }}>
       <Grid container spacing={2}>
         {/* Left side - Profile */}
@@ -201,6 +203,8 @@ const ProfilePage = () => {
         </Grid>
       </Grid>
     </Container>
+    <Footer />
+    </Box>
   );
 };
 

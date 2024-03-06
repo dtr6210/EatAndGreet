@@ -52,7 +52,7 @@ function PostCard({ id, title, imageUrl, onLike }) {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          Comments will go here.......{" "}
+          {/* Comments will go here.......{" "} */}
           {/* need to see about creating input for comments */}
         </Typography>
       </CardContent>
