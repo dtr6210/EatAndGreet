@@ -5,8 +5,9 @@ import {
   Typography,
   Box,
   CircularProgress,
-  List,
-  ListItem,
+  Paper,
+  // List,
+  // ListItem,
 } from "@mui/material";
 
 //component for displaying meal details for the inspirational recipes
@@ -44,40 +45,60 @@ export default function MealDetailPage() {
 
   if (!mealDetails)
     return (
-      <Box display="flex" justifyContent="center">
+      <Box sx={{ display: "flex", justifyContent: "center", mt: 8 }}>
         <CircularProgress />
       </Box>
     );
 
   return (
-    <Box sx={{ p: 2, mt: 8 }}>
-      <Typography variant="h4" gutterBottom>
-        {mealDetails.strMeal}
-      </Typography>
-      <Box
-        component="img"
+    <Box
+      sx={{
+        p: 2,
+        mt: 8,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Paper
+        elevation={3}
         sx={{
-          maxWidth: "100%",
-          height: "auto",
-          borderRadius: 2,
+          width: "100%",
+          maxWidth: 800,
+          p: 3,
+          m: 2,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
-        src={mealDetails.strMealThumb}
-        alt={mealDetails.strMeal}
-      />
-      <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
-        Instructions
-      </Typography>
-      <Typography paragraph>{mealDetails.strInstructions}</Typography>
-      <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
-        Ingredients
-      </Typography>
-      <Box display="flex" justifyContent="center"> 
-        <List sx={{ width: 'fit-content' }}> 
+      >
+        <Typography variant="h4" sx={{ fontWeight: "bold", mt: 1, mb: 2 }}>
+          {mealDetails.strMeal}
+        </Typography>
+        <Box
+          component="img"
+          src={mealDetails.strMealThumb}
+          alt={mealDetails.strMeal}
+          sx={{ maxWidth: "100%", borderRadius: "4px" }}
+        />
+        <Typography variant="h6" sx={{ fontWeight: "bold", mt: 2, mb: 1 }}>
+          Ingredients:
+        </Typography>
+        <Box sx={{ textAlign: "left", width: "100%" }}>
           {ingredientsList.map((ingredient, index) => (
-            <ListItem key={index}>{ingredient}</ListItem>
+            <Typography
+              key={index}
+              sx={{ ml: 2 }}
+            >{`- ${ingredient}`}</Typography>
           ))}
-        </List>
-      </Box>
+        </Box>
+        <Typography variant="h6" sx={{ fontWeight: "bold", mt: 2, mb: 1 }}>
+          Instructions:
+        </Typography>
+        <Typography sx={{ textAlign: "left", width: "100%" }}>
+          {mealDetails.strInstructions}
+        </Typography>
+      </Paper>
     </Box>
   );
 }

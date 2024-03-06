@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TextField, Button, Box, Typography, Container, Paper } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Box,
+  Typography,
+  Container,
+  Paper,
+} from "@mui/material";
 import { useUserContext } from "../context/UserContext";
+import Footer from "../components/Footer";
 
 export default function CreatePostPage() {
   const [title, setTitle] = useState("");
@@ -47,74 +55,82 @@ export default function CreatePostPage() {
   };
 
   return (
-    <Container component="main" maxWidth="md">
-       <Paper elevation={3} sx={{ p: 3, mt: 8, mb: 5 }}> 
-      <Typography component="h1" variant="h5" sx={{ mt: 5 }}>
-        Share Your Recipe
-      </Typography>
-      <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="title"
-          label="Recipe Title"
-          name="title"
-          autoComplete="title"
-          autoFocus
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          name="ingredients"
-          label="Ingredients (comma separated)"
-          type="text"
-          id="ingredients"
-          autoComplete="ingredients"
-          value={ingredients}
-          onChange={(e) => setIngredients(e.target.value)}
-          multiline
-          rows={4}
-        />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          name="directions"
-          label="Directions"
-          type="text"
-          id="directions"
-          autoComplete="directions"
-          value={directions}
-          onChange={(e) => setDirections(e.target.value)}
-          multiline
-          rows={6}
-        />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          name="imageUrl"
-          label="Image URL"
-          type="text"
-          id="imageUrl"
-          autoComplete="imageUrl"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-        />
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-        >
-          Share Recipe
-        </Button>
-      </Box>
-      </Paper>
-    </Container>
+    <Box>
+      <Container component="main" maxWidth="md">
+        <Paper elevation={3} sx={{ p: 3, mt: 8, mb: 5 }}>
+          <Typography component="h1" variant="h5" sx={{ mt: 5 }}>
+            Share Your Recipe
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="title"
+              label="Recipe Title"
+              name="title"
+              autoComplete="title"
+              autoFocus
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="ingredients"
+              label="Ingredients (comma separated)"
+              type="text"
+              id="ingredients"
+              autoComplete="ingredients"
+              value={ingredients}
+              onChange={(e) => setIngredients(e.target.value)}
+              multiline
+              rows={4}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="directions"
+              label="Directions"
+              type="text"
+              id="directions"
+              autoComplete="directions"
+              value={directions}
+              onChange={(e) => setDirections(e.target.value)}
+              multiline
+              rows={6}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="imageUrl"
+              label="Image URL"
+              type="text"
+              id="imageUrl"
+              autoComplete="imageUrl"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Share Recipe
+            </Button>
+          </Box>
+        </Paper>
+      </Container>
+      <Footer />
+    </Box>
   );
 }
