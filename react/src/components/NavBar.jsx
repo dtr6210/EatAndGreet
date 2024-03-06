@@ -60,7 +60,7 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="fixed" sx={{ bgcolor: "#B5B541" }}>
+    <AppBar position="fixed" sx={{ bgcolor: "#4141b5" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <LocalDiningIcon

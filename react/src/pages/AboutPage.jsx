@@ -6,7 +6,7 @@ import Logo2 from "/Logo2.png";
 export default function AboutPage() {
   return (
   <Box>
-    <Container maxWidth="md" sx={{ mt: 4 }}>
+    <Container maxWidth="md" sx={{ mt: 7 }}>
       <Paper elevation={3} sx={{ p: 4 }}>
         <Box
           sx={{
