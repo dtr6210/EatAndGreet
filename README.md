@@ -1,40 +1,62 @@
-#  EatAndGreet
+# EatAndGreet.com
 
-EatAndGreet is a social media application designed to connect users through their love of food.
+Welcome to EatAndGreet.com, a specialized platform designed as a sanctuary for those passionate about all aspects of food. It's where food enthusiasts and culinary experts gather to create, share, and celebrate the diversity of culinary art.
 
-## Description
+## The Problem
 
-Users can upload their recipes with pictures, ingredients, and instructions. Other users can like and comment on recipes they enjoy. If they like a particular user, they can follow them to see future posts. This app is for anybody since everyone has a need for food and most people enjoy eating.
+While popular social media sites connect people, they often become a breeding ground for fake news, misinformation, and negativity, particularly heavy on politics. For those passionate about food, the challenge is finding a space dedicated to their interest without the distractions and negativity found in general platforms.
 
-## Getting Started
+## Our Solution
 
-### Dependencies
+EatAndGreet.com offers a unique, focused environment for food lovers:
 
-This project is built with a React frontend utilizing Material-UI for styling and an Express/Node.js backend following the MVC architecture. MongoDB is used as the database. Ensure you have the following installed and set up before running the application:
+- **A Specialized Platform**: A dedicated space for sharing and discovering a vast collection of recipes, free from the common distractions of general social media.
+- **Personal Cookbook**: Users can create and maintain their own digital cookbook with just a click, making it easy to save and revisit their favorite recipes.
+- **Culinary Community**: A space to follow and engage with other users, learning from their culinary journeys and experiences.
 
-- **Node.js**: Version 14.x or above is recommended. [Download Node.js](https://nodejs.org/en/)
-- **npm**: Comes with Node.js, version 6.x or above.
-- **MongoDB**: Ensure MongoDB is installed and running on your machine. [Install MongoDB](https://www.mongodb.com/)
+## Features
 
-### Frontend
+- Share and explore recipes from a global community.
+- Save your favorite recipes in a personal, digital cookbook.
+- Engage with other food lovers, follow their updates, and build a following of your own.
 
-- **React**: A JavaScript library for building user interfaces.
-- **Material-UI**: A popular React UI framework for faster and easier web development. [Material-UI Documentation](https://mui.com/)
 
-To install React and Material-UI dependencies, navigate to your project's frontend directory and run:
+## Technology Stack
 
-npm install react @mui/material @emotion/react @emotion/styled
+- **Frontend**
+  - [React](https://react.dev/)
+  - [Material UI (MUI)](https://mui.com/material-ui/)
 
-### Backend
+- **Backend**
+  - [Node.js](https://nodejs.org/en)
+  - [Express](https://expressjs.com/)
+  - [MongoDB](https://www.mongodb.com/)
 
-- **Express**: A minimal and flexible Node.js web application framework.
-- **Node.js**: As the run time environment for running the Express server.
-- **MondgoDB**: Used for the database.  Ensure you have MongoDB installed and running.
+- **Testing and Integration**
+  - [Postman](https://www.postman.com/) for CRUD operation testing.
+  - [TheMealDB](https://www.themealdb.com/) 3rd party API for additional recipe data.
 
-To set up the Express server and connect to MongoDB, navigate to your project's backend directory and run:
+## Documentation and Resources
 
-npm install express mongoose
+- Detailed architecture diagram can be found [here](Link-to-your-project-documentation).
+- For a visual overview of the user journey within the application, refer to the user flow diagram [here](Link-to-userflow-image).
 
-Mongoose is an ODM (Object Data Modeling) library for MongoDB and Node.js.  It manages relationships between
-data, provides schema validation, and is used to translate between ojects in code and the representation of those objects
-in MongoDB.
+## Installation
+
+To get a local copy up and running follow these simple steps:
+
+```bash
+git clone https://github.com/dtr6210/EatAndGreet.git
+cd EatAndGreet
+
+```
+
+
+## Contact
+
+For any inquiries or if you wish to contribute to the project, please feel free to reach out to Dean Rials at [rialsdean@gmail.com](mailto:rialsdean@gmail.com).
+
+
+
+
+
