@@ -2,6 +2,8 @@
 
 Welcome to EatAndGreet.com, a specialized platform designed as a sanctuary for those passionate about all aspects of food. It's where food enthusiasts and culinary experts gather to create, share, and celebrate the diversity of culinary art.
 
+The project document for EatAndGreet.com can be located [here](./images/ProjectDocument.pdf).
+
 ## The Problem
 
 While popular social media sites connect people, they often become a breeding ground for fake news, misinformation, and negativity, particularly heavy on politics. For those passionate about food, the challenge is finding a space dedicated to their interest without the distractions and negativity found in general platforms.
