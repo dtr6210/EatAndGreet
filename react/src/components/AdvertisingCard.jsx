@@ -46,11 +46,6 @@ export default function AdvertisingCard() {
           image={randomAdvert}
           alt="your ad here"
         />
-        {/* <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            Advertise with us
-          </Typography>
-        </CardContent> */}
       </CardActionArea>
     </Card>
   );

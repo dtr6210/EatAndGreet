@@ -26,7 +26,6 @@ const pages = [
 const settings = [
   { name: "Profile", path: "/profile" },
   // { name: "Account", path: "/account" },
-  // { name: "Dashboard", path: "/dashboard" },
   { name: "Logout" },
 ];
 
