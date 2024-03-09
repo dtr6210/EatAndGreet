@@ -47,11 +47,24 @@ EatAndGreet.com offers a unique, focused environment for food lovers:
 
 To get a local copy up and running follow these simple steps:
 
-```bash
-git clone https://github.com/dtr6210/EatAndGreet.git
-cd EatAndGreet
 
-```
+- Clone the repository: git clone https://github.com/dtr6210/EatAndGreet.git
+  
+- Navigate to the project directory: cd EatAndGreet
+
+- Install the dependencies for the frontend and backend:
+  - cd react
+  - npm install
+  - cd server
+  - cd npm install
+ 
+- Be sure you have MongoDB installed
+  - Create a .env file in the server directory
+  - Store your database connection string in the environment varible you created above.  It may look something like this DATABASE_URL=mongodb://localhost:5173/yourdatabasename
+  - Be sure to include your .env file in your .gitignore file to keep your database credentials secure.
+  
+
+
 
 
 ## Contact
