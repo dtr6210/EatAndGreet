@@ -17,6 +17,16 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 // The PostCard is used to display recipes on the main feed page
 
+const StyledCardHeader = styled(CardHeader)(({ theme }) => ({
+  "& .MuiCardHeader-content": {
+    overflow: "hidden", // keep heading from spilling over
+    whiteSpace: "nowrap",
+  },
+  "& .MuiCardHeader-title": {
+    fontSize: "1.2rem",
+  },
+}));
+
 function PostCard({ id, title, imageUrl, onLike }) {
   console.log("Rendering PostCard with id:", id); // checking id
   const navigate = useNavigate();
@@ -43,7 +53,7 @@ function PostCard({ id, title, imageUrl, onLike }) {
 
   return (
     <Card sx={{ maxWidth: 345, height: "auto" }}>
-      <CardHeader title={title} />
+      <StyledCardHeader title={title} />
       <CardMedia
         component="img"
         height="194"
@@ -51,17 +61,19 @@ function PostCard({ id, title, imageUrl, onLike }) {
         alt={`Image of ${title}`}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {/* Comments will go here.......{" "} */}
-          {/* need to see about creating input for comments */}
-        </Typography>
+        <Typography variant="body2" color="text.secondary"></Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={handleLike}>
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="view post" onClick={handleViewPost}>
-          View the full recipe
+          <Typography
+            variant="body2"
+            sx={{ fontSize: "1.2rem", alignItems: "center" }}
+          >
+            View the full recipe
+          </Typography>
         </IconButton>
       </CardActions>
     </Card>

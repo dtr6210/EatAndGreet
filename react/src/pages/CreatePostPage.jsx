@@ -11,22 +11,26 @@ import {
 import { useUserContext } from "../context/UserContext";
 import Footer from "../components/Footer";
 
+// state hooks for managing form inputs and submission result
 export default function CreatePostPage() {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [directions, setDirections] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [submitResult, setSubmitResult] = useState("");
+
+  // access current user and navigate for redirecting
   const { currentUser } = useUserContext();
   const navigate = useNavigate();
 
+  //handler for form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const postData = {
       author: currentUser._id,
       recipe: title,
-      ingredients: ingredients.split(","),
+      ingredients: ingredients.split(","), //splitting ingredients by comma into an array
       directions,
       picture: imageUrl,
     };
@@ -44,7 +48,7 @@ export default function CreatePostPage() {
 
       if (response.ok) {
         setSubmitResult("Post created successfully");
-        navigate("/main");
+        navigate("/profile"); // redirect to profile page after successul post creation
       } else {
         setSubmitResult(data.message || "Failed to create post");
       }
@@ -77,7 +81,7 @@ export default function CreatePostPage() {
               autoComplete="title"
               autoFocus
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)} //update title on change
             />
             <TextField
               margin="normal"
@@ -89,7 +93,7 @@ export default function CreatePostPage() {
               id="ingredients"
               autoComplete="ingredients"
               value={ingredients}
-              onChange={(e) => setIngredients(e.target.value)}
+              onChange={(e) => setIngredients(e.target.value)} //update ingredients on change
               multiline
               rows={4}
             />
@@ -103,7 +107,7 @@ export default function CreatePostPage() {
               id="directions"
               autoComplete="directions"
               value={directions}
-              onChange={(e) => setDirections(e.target.value)}
+              onChange={(e) => setDirections(e.target.value)} // update directions on change
               multiline
               rows={6}
             />
@@ -117,7 +121,7 @@ export default function CreatePostPage() {
               id="imageUrl"
               autoComplete="imageUrl"
               value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
+              onChange={(e) => setImageUrl(e.target.value)} //update image on change
             />
             <Button
               type="submit"

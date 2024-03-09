@@ -66,9 +66,6 @@ export default function SignInSide() {
           console.log("post response", data.result);
           return data.result;
         });
-      // setSubmitResult("Successful login");
-      // handleUpdateUser({ email: userEmail });
-      // navigate("/main"); //navigate to main page after succesful login
     }
   };
 
