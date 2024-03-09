@@ -39,7 +39,7 @@ EatAndGreet.com offers a unique, focused environment for food lovers:
 ## Documentation and Resources
 
 - Detailed architecture diagram can be found [here](./images/ArchitectureDiagram.png).
-- For a visual overview of the user journey within the application, refer to the user flow diagram [here](Link-to-userflow-image).
+- For a visual overview of the user journey within the application, refer to the user flow diagram [here](./images/userflow.jpeg).
 
 ## Installation
 
